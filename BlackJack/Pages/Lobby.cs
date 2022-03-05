@@ -20,7 +20,6 @@ namespace BlackJack.Pages
         public static RichTextBox chatText;
         public static Label[] slots = new Label[4];
         public static Button startGame;
-        public Color dialogColor;
         bool isHost;
         public Lobby()
         {
@@ -39,21 +38,29 @@ namespace BlackJack.Pages
 
         #region Chat
 
-        private void messageTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        private async void messageTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                Pages.MultiPlayer.server.SendRequest($"chat,{dialogColor.Name},{Settings.username},{messageTextBox.Text}");
+                messageTextBox.Enabled = false;
+                messageTextBox.Text.Replace(',', '|');
+                Pages.MultiPlayer.server.SendRequest($"chat,{colorDialog1.Color.ToArgb()},{Settings.username},{messageTextBox.Text}");
                 messageTextBox.Text = "";
+                await Task.Delay(3000);
+                messageTextBox.Enabled = true;
             }
         }
-        private void SendMessageBtn_Click(object sender, EventArgs e)
+        private async void SendMessageBtn_Click(object sender, EventArgs e)
         {
+            messageTextBox.Enabled = false;
+            messageTextBox.Text.Replace(',', '|');
             Pages.MultiPlayer.server.SendRequest($"chat,{colorDialog1.Color.ToArgb()},{Settings.username},{messageTextBox.Text}");
             messageTextBox.Text = "";
+            await Task.Delay(3000);
+            messageTextBox.Enabled = true;
         }
         #endregion
-        
+
         private void createServerBtn_Click(object sender, EventArgs e)
         {
             if(!isHost)
@@ -70,10 +77,14 @@ namespace BlackJack.Pages
             joinServerBtn.Enabled = false;
             if(!isHost)
             {
-                MultiPlayer.server.Connect(false, joinServerID.Text);
+                if (!MultiPlayer.server.wsServer.IsAlive)
+                    MultiPlayer.server.Connect(false, joinServerID.Text);
+                else
+                    MultiPlayer.server.UpdateRoomIdAndHost(false, joinServerID.Text);
+
                 MultiPlayer.server.SendRequest($"checkRoomId,{Settings.username}");
             }
-            await Task.Delay(100000);
+            await Task.Delay(10000);
             joinServerBtn.Enabled = true;
         }
 
@@ -85,10 +96,7 @@ namespace BlackJack.Pages
 
         private void colorBtn_Click(object sender, EventArgs e)
         {
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                dialogColor = colorDialog1.Color;
-            }
+            colorDialog1.ShowDialog();
         }
     }
 }

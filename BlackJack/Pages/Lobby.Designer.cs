@@ -253,6 +253,7 @@
             // chatTextLB
             // 
             this.chatTextLB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chatTextLB.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.chatTextLB.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.chatTextLB.Location = new System.Drawing.Point(66, 20);
             this.chatTextLB.Name = "chatTextLB";

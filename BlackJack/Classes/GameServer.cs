@@ -10,7 +10,7 @@ namespace BlackJack.Classes
 {
     public class GameServer
     {
-        WebSocket wsServer = new WebSocket(Settings.SERVER_URL);
+        public WebSocket wsServer = new WebSocket(Settings.SERVER_URL);
         public bool isHost;
         public string roomId;
 
@@ -20,6 +20,12 @@ namespace BlackJack.Classes
             roomId = room;
             wsServer.OnMessage += WsServer_OnMessage;
             wsServer.Connect();
+        }
+
+        public void UpdateRoomIdAndHost(bool host, string room)
+        {
+            isHost = host;
+            roomId = room;
         }
 
         private void WsServer_OnMessage(object sender, MessageEventArgs e)
