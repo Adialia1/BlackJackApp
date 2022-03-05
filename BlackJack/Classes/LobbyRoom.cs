@@ -7,21 +7,23 @@ namespace BlackJack.Classes
     {
         //Chat
         //[Both]
-        public static void AddText(string name, string msg)
+        public static void AddText(string name, string color, string msg)
         {
             Pages.Lobby.chatText.BeginInvoke((Action)(() =>
             {
-                Pages.Lobby.chatText.Text += $"{name}: {msg}" + Environment.NewLine;
+                Pages.Lobby.chatText.SelectionColor = Color.FromArgb(int.Parse(color));
+                Pages.Lobby.chatText.SelectedText = $"{name}: {msg}" + Environment.NewLine;
             }));
         }
 
         //[Both]
         public static void JoinMessage(string name)
         {
+            
             Pages.Lobby.chatText.BeginInvoke((Action)(() =>
             {
-                Pages.Lobby.chatText.ForeColor = Color.Gray;
-                Pages.Lobby.chatText.Text += $"{name} joined";
+                Pages.Lobby.chatText.SelectionColor = Color.Gray;
+                Pages.Lobby.chatText.SelectedText += $"{name} joined" + Environment.NewLine;
             }));
         }
 

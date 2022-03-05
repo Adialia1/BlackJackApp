@@ -80,7 +80,7 @@ namespace BlackJack.Classes
             switch (message[1])
             {
                 case "chat":
-                    LobbyRoom.AddText(message[2], message[3]);
+                    LobbyRoom.AddText(message[3], message[2], message[4]);
                     break;
 
                 case "join-accept":

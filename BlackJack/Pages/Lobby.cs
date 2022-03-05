@@ -20,6 +20,7 @@ namespace BlackJack.Pages
         public static RichTextBox chatText;
         public static Label[] slots = new Label[4];
         public static Button startGame;
+        public Color dialogColor;
         bool isHost;
         public Lobby()
         {
@@ -37,33 +38,18 @@ namespace BlackJack.Pages
         }
 
         #region Chat
-        private void messageTextBox_Enter(object sender, EventArgs e)
-        {
-            if (messageTextBox.Text == "Enter Message")
-                messageTextBox.Text = "";
-            messageTextBox.ForeColor = Color.Black;
-        }
-
-        private void messageTextBox_Leave(object sender, EventArgs e)
-        {
-            if (messageTextBox.Text.Length <= 0)
-            {
-                messageTextBox.Text = "Enter Message";
-                messageTextBox.ForeColor = Color.Gray;
-            }
-        }
 
         private void messageTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                Pages.MultiPlayer.server.SendRequest($"chat,{Settings.username},{messageTextBox.Text}");
+                Pages.MultiPlayer.server.SendRequest($"chat,{dialogColor.Name},{Settings.username},{messageTextBox.Text}");
                 messageTextBox.Text = "";
             }
         }
         private void SendMessageBtn_Click(object sender, EventArgs e)
         {
-            Pages.MultiPlayer.server.SendRequest($"chat,{Settings.username},{messageTextBox.Text}");
+            Pages.MultiPlayer.server.SendRequest($"chat,{colorDialog1.Color.ToArgb()},{Settings.username},{messageTextBox.Text}");
             messageTextBox.Text = "";
         }
         #endregion
@@ -95,6 +81,14 @@ namespace BlackJack.Pages
         {
             int t = tableSizeTrackBar.Value;
             tableSizeLB.Text = "Table Size: " + tableSizeTrackBar.Value;
+        }
+
+        private void colorBtn_Click(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                dialogColor = colorDialog1.Color;
+            }
         }
     }
 }

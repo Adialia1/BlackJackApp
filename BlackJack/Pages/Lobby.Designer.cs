@@ -39,14 +39,16 @@
             this.createServerBtn = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.LobbyPanel = new System.Windows.Forms.Panel();
-            this.messageTextBox = new System.Windows.Forms.TextBox();
-            this.chatTextLB = new System.Windows.Forms.RichTextBox();
-            this.slot1LB = new System.Windows.Forms.Label();
-            this.slot2LB = new System.Windows.Forms.Label();
-            this.slot3LB = new System.Windows.Forms.Label();
-            this.slot4LB = new System.Windows.Forms.Label();
+            this.sendMessageBtn = new System.Windows.Forms.Button();
             this.startGameBtn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.slot4LB = new System.Windows.Forms.Label();
+            this.slot3LB = new System.Windows.Forms.Label();
+            this.slot2LB = new System.Windows.Forms.Label();
+            this.slot1LB = new System.Windows.Forms.Label();
+            this.chatTextLB = new System.Windows.Forms.RichTextBox();
+            this.messageTextBox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.colorBtn = new System.Windows.Forms.Button();
             this.MultiPlayerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.joinServerBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.createServerBtn)).BeginInit();
@@ -169,13 +171,14 @@
             // 
             // LobbyPanel
             // 
-            this.LobbyPanel.Controls.Add(this.button1);
+            this.LobbyPanel.Controls.Add(this.colorBtn);
+            this.LobbyPanel.Controls.Add(this.messageTextBox);
+            this.LobbyPanel.Controls.Add(this.sendMessageBtn);
             this.LobbyPanel.Controls.Add(this.startGameBtn);
             this.LobbyPanel.Controls.Add(this.slot4LB);
             this.LobbyPanel.Controls.Add(this.slot3LB);
             this.LobbyPanel.Controls.Add(this.slot2LB);
             this.LobbyPanel.Controls.Add(this.slot1LB);
-            this.LobbyPanel.Controls.Add(this.messageTextBox);
             this.LobbyPanel.Controls.Add(this.chatTextLB);
             this.LobbyPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LobbyPanel.Location = new System.Drawing.Point(0, 0);
@@ -183,59 +186,25 @@
             this.LobbyPanel.Size = new System.Drawing.Size(1264, 661);
             this.LobbyPanel.TabIndex = 25;
             // 
-            // messageTextBox
+            // sendMessageBtn
             // 
-            this.messageTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.messageTextBox.ForeColor = System.Drawing.Color.Gray;
-            this.messageTextBox.Location = new System.Drawing.Point(66, 467);
-            this.messageTextBox.Name = "messageTextBox";
-            this.messageTextBox.Size = new System.Drawing.Size(394, 38);
-            this.messageTextBox.TabIndex = 1;
-            this.messageTextBox.Text = "Enter Message";
-            this.messageTextBox.Enter += new System.EventHandler(this.messageTextBox_Enter);
-            this.messageTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.messageTextBox_KeyPress);
-            this.messageTextBox.Leave += new System.EventHandler(this.messageTextBox_Leave);
+            this.sendMessageBtn.Location = new System.Drawing.Point(466, 467);
+            this.sendMessageBtn.Name = "sendMessageBtn";
+            this.sendMessageBtn.Size = new System.Drawing.Size(148, 38);
+            this.sendMessageBtn.TabIndex = 7;
+            this.sendMessageBtn.Text = "Send Message";
+            this.sendMessageBtn.UseVisualStyleBackColor = true;
+            this.sendMessageBtn.Click += new System.EventHandler(this.SendMessageBtn_Click);
             // 
-            // chatTextLB
+            // startGameBtn
             // 
-            this.chatTextLB.Location = new System.Drawing.Point(66, 20);
-            this.chatTextLB.Name = "chatTextLB";
-            this.chatTextLB.Size = new System.Drawing.Size(548, 441);
-            this.chatTextLB.TabIndex = 0;
-            this.chatTextLB.Text = "";
-            // 
-            // slot1LB
-            // 
-            this.slot1LB.AutoSize = true;
-            this.slot1LB.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.slot1LB.Location = new System.Drawing.Point(748, 59);
-            this.slot1LB.Name = "slot1LB";
-            this.slot1LB.Size = new System.Drawing.Size(89, 33);
-            this.slot1LB.TabIndex = 2;
-            this.slot1LB.Text = "Slot 1";
-            this.slot1LB.Visible = false;
-            // 
-            // slot2LB
-            // 
-            this.slot2LB.AutoSize = true;
-            this.slot2LB.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.slot2LB.Location = new System.Drawing.Point(748, 92);
-            this.slot2LB.Name = "slot2LB";
-            this.slot2LB.Size = new System.Drawing.Size(89, 33);
-            this.slot2LB.TabIndex = 3;
-            this.slot2LB.Text = "Slot 2";
-            this.slot2LB.Visible = false;
-            // 
-            // slot3LB
-            // 
-            this.slot3LB.AutoSize = true;
-            this.slot3LB.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.slot3LB.Location = new System.Drawing.Point(748, 125);
-            this.slot3LB.Name = "slot3LB";
-            this.slot3LB.Size = new System.Drawing.Size(89, 33);
-            this.slot3LB.TabIndex = 4;
-            this.slot3LB.Text = "Slot 3";
-            this.slot3LB.Visible = false;
+            this.startGameBtn.Location = new System.Drawing.Point(735, 307);
+            this.startGameBtn.Name = "startGameBtn";
+            this.startGameBtn.Size = new System.Drawing.Size(192, 42);
+            this.startGameBtn.TabIndex = 6;
+            this.startGameBtn.Text = "Start Game";
+            this.startGameBtn.UseVisualStyleBackColor = true;
+            this.startGameBtn.Visible = false;
             // 
             // slot4LB
             // 
@@ -248,25 +217,84 @@
             this.slot4LB.Text = "Slot 4";
             this.slot4LB.Visible = false;
             // 
-            // startGameBtn
+            // slot3LB
             // 
-            this.startGameBtn.Location = new System.Drawing.Point(735, 307);
-            this.startGameBtn.Name = "startGameBtn";
-            this.startGameBtn.Size = new System.Drawing.Size(192, 42);
-            this.startGameBtn.TabIndex = 6;
-            this.startGameBtn.Text = "Start Game";
-            this.startGameBtn.UseVisualStyleBackColor = true;
-            this.startGameBtn.Visible = false;
+            this.slot3LB.AutoSize = true;
+            this.slot3LB.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.slot3LB.Location = new System.Drawing.Point(748, 125);
+            this.slot3LB.Name = "slot3LB";
+            this.slot3LB.Size = new System.Drawing.Size(89, 33);
+            this.slot3LB.TabIndex = 4;
+            this.slot3LB.Text = "Slot 3";
+            this.slot3LB.Visible = false;
             // 
-            // button1
+            // slot2LB
             // 
-            this.button1.Location = new System.Drawing.Point(466, 467);
-            this.button1.Name = "SendMessageBtn";
-            this.button1.Size = new System.Drawing.Size(148, 38);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Send Message";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.SendMessageBtn_Click);
+            this.slot2LB.AutoSize = true;
+            this.slot2LB.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.slot2LB.Location = new System.Drawing.Point(748, 92);
+            this.slot2LB.Name = "slot2LB";
+            this.slot2LB.Size = new System.Drawing.Size(89, 33);
+            this.slot2LB.TabIndex = 3;
+            this.slot2LB.Text = "Slot 2";
+            this.slot2LB.Visible = false;
+            // 
+            // slot1LB
+            // 
+            this.slot1LB.AutoSize = true;
+            this.slot1LB.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.slot1LB.Location = new System.Drawing.Point(748, 59);
+            this.slot1LB.Name = "slot1LB";
+            this.slot1LB.Size = new System.Drawing.Size(89, 33);
+            this.slot1LB.TabIndex = 2;
+            this.slot1LB.Text = "Slot 1";
+            this.slot1LB.Visible = false;
+            // 
+            // chatTextLB
+            // 
+            this.chatTextLB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chatTextLB.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.chatTextLB.Location = new System.Drawing.Point(66, 20);
+            this.chatTextLB.Name = "chatTextLB";
+            this.chatTextLB.ReadOnly = true;
+            this.chatTextLB.Size = new System.Drawing.Size(548, 441);
+            this.chatTextLB.TabIndex = 0;
+            this.chatTextLB.Text = "";
+            // 
+            // messageTextBox
+            // 
+            this.messageTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.messageTextBox.DefaultText = "";
+            this.messageTextBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.messageTextBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.messageTextBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.messageTextBox.DisabledState.Parent = this.messageTextBox;
+            this.messageTextBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.messageTextBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.messageTextBox.FocusedState.Parent = this.messageTextBox;
+            this.messageTextBox.ForeColor = System.Drawing.Color.Black;
+            this.messageTextBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.messageTextBox.HoverState.Parent = this.messageTextBox;
+            this.messageTextBox.Location = new System.Drawing.Point(66, 467);
+            this.messageTextBox.Name = "messageTextBox";
+            this.messageTextBox.PasswordChar = '\0';
+            this.messageTextBox.PlaceholderForeColor = System.Drawing.Color.Black;
+            this.messageTextBox.PlaceholderText = "Enter Message";
+            this.messageTextBox.SelectedText = "";
+            this.messageTextBox.ShadowDecoration.Parent = this.messageTextBox;
+            this.messageTextBox.Size = new System.Drawing.Size(341, 38);
+            this.messageTextBox.TabIndex = 9;
+            this.messageTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.messageTextBox_KeyPress);
+            // 
+            // colorBtn
+            // 
+            this.colorBtn.Location = new System.Drawing.Point(413, 467);
+            this.colorBtn.Name = "colorBtn";
+            this.colorBtn.Size = new System.Drawing.Size(47, 38);
+            this.colorBtn.TabIndex = 10;
+            this.colorBtn.Text = "Color";
+            this.colorBtn.UseVisualStyleBackColor = true;
+            this.colorBtn.Click += new System.EventHandler(this.colorBtn_Click);
             // 
             // Lobby
             // 
@@ -302,13 +330,15 @@
         private System.Windows.Forms.PictureBox createServerBtn;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel LobbyPanel;
-        private System.Windows.Forms.TextBox messageTextBox;
         private System.Windows.Forms.RichTextBox chatTextLB;
         private System.Windows.Forms.Label slot4LB;
         private System.Windows.Forms.Label slot3LB;
         private System.Windows.Forms.Label slot2LB;
         private System.Windows.Forms.Label slot1LB;
         private System.Windows.Forms.Button startGameBtn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button sendMessageBtn;
+        private Guna.UI2.WinForms.Guna2TextBox messageTextBox;
+        private System.Windows.Forms.Button colorBtn;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }
