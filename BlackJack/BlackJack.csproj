@@ -1,0 +1,416 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{937AF1A0-3878-4A54-8D88-D676AB88B616}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>BlackJack</RootNamespace>
+    <AssemblyName>BlackJack</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Guna.UI2">
+      <HintPath>..\..\..\BlackJack - Multiplayer - online\BlackJack - FinalProject\BlackJack - FinalProject\bin\Debug\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="websocket-sharp, Version=1.0.2.32519, Culture=neutral, PublicKeyToken=5660b08a1845a91e, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebSocketSharp-NonPreRelease.1.0.0\lib\net35\websocket-sharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\Admin.cs" />
+    <Compile Include="Classes\Balance.cs" />
+    <Compile Include="Classes\Deck.cs" />
+    <Compile Include="Classes\LobbyRoom.cs" />
+    <Compile Include="Classes\Login.cs" />
+    <Compile Include="Classes\GameServer.cs" />
+    <Compile Include="Classes\MultiPlayerSetUp.cs" />
+    <Compile Include="Classes\Settings.cs" />
+    <Compile Include="Game.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game.Designer.cs">
+      <DependentUpon>Game.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin.Designer.cs">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Lobby.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Lobby.Designer.cs">
+      <DependentUpon>Lobby.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Login.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Menu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MultiPlayer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\MultiPlayer.Designer.cs">
+      <DependentUpon>MultiPlayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SinglePlayer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\SinglePlayer.Designer.cs">
+      <DependentUpon>SinglePlayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Game.resx">
+      <DependentUpon>Game.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Admin.resx">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Lobby.resx">
+      <DependentUpon>Lobby.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\MultiPlayer.resx">
+      <DependentUpon>MultiPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\SinglePlayer.resx">
+      <DependentUpon>SinglePlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Table.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoadingLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\playBtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\adminBtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\allInBtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BackGroundCards.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BalanceBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnhalf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CardsDeck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chip10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chip100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chip10ForLastAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chip20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chip50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\club-10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\club-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\club-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\club-4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\club-5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\club-6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\club-7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\club-8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\club-9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\club-a.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\club-j.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\club-k.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\club-q.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CreateServerBtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dealBtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diamond-10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diamond-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diamond-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diamond-4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diamond-5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diamond-6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diamond-7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diamond-8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diamond-9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diamond-a.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diamond-j.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diamond-k.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diamond-q.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart-10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart-4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart-5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart-6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart-7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart-8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart-9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart-a.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart-j.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart-k.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart-q.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hitBtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\incorrectLogin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\JoinServerBtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loginBtnImg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoginIMG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loseEndGame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multiPlayerBtnIMG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MultiPlayerLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\passwordIMG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pushEndGame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RegisterBtnIMG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SideCard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\singlePlayerBtnIMG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spade-10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spade-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spade-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spade-4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spade-5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spade-6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spade-7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spade-8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spade-9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spade-a.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spade-j.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spade-k.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spade-q.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\standBtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\toLoginBtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usernameExists.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usernameIMG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\winEndGame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xBtnforChip.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
