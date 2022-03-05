@@ -48,7 +48,8 @@ namespace BlackJack.Classes
 
         //[Both]
         public static void JoinAccept(string data)
-        {
+        {   //                  [room],[message-action],[userId],[tableSize],[usersConnetedNames]
+            //Template message: 349551,join-accept,2,3,test,.or,adi
             Pages.Lobby.lobby_panel.Invoke(new Action(() =>
             { Pages.Lobby.lobby_panel.BringToFront(); }));
             string[] message = data.Split(',');
@@ -59,17 +60,15 @@ namespace BlackJack.Classes
                     myId = int.Parse(message[2]);
                 tableSize = int.Parse(message[3]);
             }
-            
-            //Load Usernames in looby room
+            //Send joined message on chat
+            LobbyRoom.JoinMessage(message[message.Length-1]);
+
+            //Setup Usernames arry
+            string[] usernames = new string[myId+1];
             for (int i = 0; i <= int.Parse(message[2]); i++)
-            {
-                //SetUp lb arry
-                Pages.Lobby.slots[i].Invoke(new Action(() =>
-                {
-                    Pages.Lobby.slots[i].Text = message[4 + i];
-                    Pages.Lobby.slots[i].Visible = true;
-                }));
-            }
+                usernames[i] = message[4 + i];
+
+            LobbyRoom.LoadNames(usernames);
 
         }
 
