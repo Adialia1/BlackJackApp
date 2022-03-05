@@ -67,7 +67,7 @@ namespace BlackJack.Pages
             messageTextBox.Text = "";
         }
         #endregion
-
+        
         private void createServerBtn_Click(object sender, EventArgs e)
         {
             if(!isHost)
