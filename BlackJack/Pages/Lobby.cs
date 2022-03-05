@@ -70,7 +70,6 @@ namespace BlackJack.Pages
         
         private void createServerBtn_Click(object sender, EventArgs e)
         {
-            ////test
             if(!isHost)
             {
                 hostServerID.Text = Pages.MultiPlayer.server.CreateNewRoom(tableSizeTrackBar.Value);
