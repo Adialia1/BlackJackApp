@@ -39,6 +39,8 @@
             this.createServerBtn = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.LobbyPanel = new System.Windows.Forms.Panel();
+            this.colorBtn = new System.Windows.Forms.Button();
+            this.messageTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.sendMessageBtn = new System.Windows.Forms.Button();
             this.startGameBtn = new System.Windows.Forms.Button();
             this.slot4LB = new System.Windows.Forms.Label();
@@ -46,9 +48,7 @@
             this.slot2LB = new System.Windows.Forms.Label();
             this.slot1LB = new System.Windows.Forms.Label();
             this.chatTextLB = new System.Windows.Forms.RichTextBox();
-            this.messageTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.colorBtn = new System.Windows.Forms.Button();
             this.MultiPlayerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.joinServerBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.createServerBtn)).BeginInit();
@@ -123,6 +123,8 @@
             this.joinServerID.Size = new System.Drawing.Size(307, 50);
             this.joinServerID.TabIndex = 21;
             this.joinServerID.Text = "Room ID";
+            this.joinServerID.Enter += new System.EventHandler(this.joinServerID_Enter);
+            this.joinServerID.Leave += new System.EventHandler(this.joinServerID_Leave);
             // 
             // hostServerID
             // 
@@ -186,6 +188,41 @@
             this.LobbyPanel.Size = new System.Drawing.Size(1264, 661);
             this.LobbyPanel.TabIndex = 25;
             // 
+            // colorBtn
+            // 
+            this.colorBtn.Location = new System.Drawing.Point(413, 467);
+            this.colorBtn.Name = "colorBtn";
+            this.colorBtn.Size = new System.Drawing.Size(47, 38);
+            this.colorBtn.TabIndex = 10;
+            this.colorBtn.Text = "Color";
+            this.colorBtn.UseVisualStyleBackColor = true;
+            this.colorBtn.Click += new System.EventHandler(this.colorBtn_Click);
+            // 
+            // messageTextBox
+            // 
+            this.messageTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.messageTextBox.DefaultText = "";
+            this.messageTextBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.messageTextBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.messageTextBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.messageTextBox.DisabledState.Parent = this.messageTextBox;
+            this.messageTextBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.messageTextBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.messageTextBox.FocusedState.Parent = this.messageTextBox;
+            this.messageTextBox.ForeColor = System.Drawing.Color.Black;
+            this.messageTextBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.messageTextBox.HoverState.Parent = this.messageTextBox;
+            this.messageTextBox.Location = new System.Drawing.Point(66, 467);
+            this.messageTextBox.Name = "messageTextBox";
+            this.messageTextBox.PasswordChar = '\0';
+            this.messageTextBox.PlaceholderForeColor = System.Drawing.Color.Black;
+            this.messageTextBox.PlaceholderText = "Enter Message";
+            this.messageTextBox.SelectedText = "";
+            this.messageTextBox.ShadowDecoration.Parent = this.messageTextBox;
+            this.messageTextBox.Size = new System.Drawing.Size(341, 38);
+            this.messageTextBox.TabIndex = 9;
+            this.messageTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.messageTextBox_KeyPress);
+            // 
             // sendMessageBtn
             // 
             this.sendMessageBtn.Location = new System.Drawing.Point(466, 467);
@@ -198,13 +235,14 @@
             // 
             // startGameBtn
             // 
-            this.startGameBtn.Location = new System.Drawing.Point(735, 307);
+            this.startGameBtn.Location = new System.Drawing.Point(775, 463);
             this.startGameBtn.Name = "startGameBtn";
             this.startGameBtn.Size = new System.Drawing.Size(192, 42);
             this.startGameBtn.TabIndex = 6;
             this.startGameBtn.Text = "Start Game";
             this.startGameBtn.UseVisualStyleBackColor = true;
             this.startGameBtn.Visible = false;
+            this.startGameBtn.Click += new System.EventHandler(this.startGameBtn_Click);
             // 
             // slot4LB
             // 
@@ -261,41 +299,6 @@
             this.chatTextLB.Size = new System.Drawing.Size(548, 441);
             this.chatTextLB.TabIndex = 0;
             this.chatTextLB.Text = "";
-            // 
-            // messageTextBox
-            // 
-            this.messageTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.messageTextBox.DefaultText = "";
-            this.messageTextBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.messageTextBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.messageTextBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.messageTextBox.DisabledState.Parent = this.messageTextBox;
-            this.messageTextBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.messageTextBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.messageTextBox.FocusedState.Parent = this.messageTextBox;
-            this.messageTextBox.ForeColor = System.Drawing.Color.Black;
-            this.messageTextBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.messageTextBox.HoverState.Parent = this.messageTextBox;
-            this.messageTextBox.Location = new System.Drawing.Point(66, 467);
-            this.messageTextBox.Name = "messageTextBox";
-            this.messageTextBox.PasswordChar = '\0';
-            this.messageTextBox.PlaceholderForeColor = System.Drawing.Color.Black;
-            this.messageTextBox.PlaceholderText = "Enter Message";
-            this.messageTextBox.SelectedText = "";
-            this.messageTextBox.ShadowDecoration.Parent = this.messageTextBox;
-            this.messageTextBox.Size = new System.Drawing.Size(341, 38);
-            this.messageTextBox.TabIndex = 9;
-            this.messageTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.messageTextBox_KeyPress);
-            // 
-            // colorBtn
-            // 
-            this.colorBtn.Location = new System.Drawing.Point(413, 467);
-            this.colorBtn.Name = "colorBtn";
-            this.colorBtn.Size = new System.Drawing.Size(47, 38);
-            this.colorBtn.TabIndex = 10;
-            this.colorBtn.Text = "Color";
-            this.colorBtn.UseVisualStyleBackColor = true;
-            this.colorBtn.Click += new System.EventHandler(this.colorBtn_Click);
             // 
             // Lobby
             // 

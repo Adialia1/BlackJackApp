@@ -60,6 +60,7 @@
     <Compile Include="Classes\LobbyRoom.cs" />
     <Compile Include="Classes\Login.cs" />
     <Compile Include="Classes\GameServer.cs" />
+    <Compile Include="Classes\MultiPlayerCMD.cs" />
     <Compile Include="Classes\MultiPlayerSetUp.cs" />
     <Compile Include="Classes\Settings.cs" />
     <Compile Include="Game.cs">
