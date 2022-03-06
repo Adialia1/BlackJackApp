@@ -30,7 +30,6 @@ namespace BlackJack.Classes
         //[Both]
         public static void LoadNames(string[] usernames)
         {
-
             for (int i = 0; i < usernames.Length; i++)
             {
                 //SetUp lb arry
