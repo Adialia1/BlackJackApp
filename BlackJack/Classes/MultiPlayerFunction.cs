@@ -26,17 +26,16 @@ namespace BlackJack.Classes
             int playersInRoom = MultiPlayerSetUp.tableSize;
             for (int i = 0; i < playersInRoom; i++)
             {
-                Label sum = new Label();
-                sum.AutoSize = true;
-                sum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-                sum.ForeColor = System.Drawing.Color.White;
-                sum.Location = new System.Drawing.Point(40 * (i + 1), 50 * (i + 1));
-                sum.Name = $"sumPlayer{i}";
-                sum.Tag = $"sumPlayer{i}";
-                sum.Size = new System.Drawing.Size(29 * (i + 1), 13 * (i + 1));
-                sum.Visible = true;
                 Pages.MultiPlayer.Instance.Invoke(new Action(() =>
                 {
+                    Label sum = new Label();
+                    sum.AutoSize = true;
+                    sum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+                    sum.ForeColor = System.Drawing.Color.White;
+                    sum.Location = new System.Drawing.Point(40 * (i + 1), 50 * (i + 1));
+                    sum.Name = $"sumPlayer{i}";
+                    sum.Tag = $"sumPlayer{i}";
+                    sum.Size = new System.Drawing.Size(29 * (i + 1), 13 * (i + 1));
                     Pages.MultiPlayer.Instance.Controls.Add(sum);
                     sum.BringToFront();
                 }));
