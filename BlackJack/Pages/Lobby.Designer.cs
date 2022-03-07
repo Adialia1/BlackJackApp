@@ -306,8 +306,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.BackgroundImage = global::BlackJack.Properties.Resources.Table;
-            this.Controls.Add(this.LobbyPanel);
             this.Controls.Add(this.MultiPlayerPanel);
+            this.Controls.Add(this.LobbyPanel);
             this.Name = "Lobby";
             this.Size = new System.Drawing.Size(1264, 661);
             this.MultiPlayerPanel.ResumeLayout(false);

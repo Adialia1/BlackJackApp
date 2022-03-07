@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BlackJack.Classes
 {
@@ -20,8 +21,8 @@ namespace BlackJack.Classes
         {
             WebClient web = new WebClient();
 
-            if (username.Trim().Length < 0 || password.Trim().Length < 0) return false;
-            if(username.Contains(',') || password.Contains(',')) return false;
+            if (username.Trim(' ').Length <= 0 || password.Trim(' ').Length <= 0) return false;
+            //if(!username.Contains(',') || !password.Contains(',')) return false;
 
             string url = $"{Settings.API_URL}/login.php?user={username}&pass={password}";
             string res = web.DownloadString(url);
@@ -41,10 +42,10 @@ namespace BlackJack.Classes
         {
             WebClient web = new WebClient();
 
-            if (username.Trim().Length < 0 || password.Trim().Length < 0) return false;
-            if (username.Contains(',') || password.Contains(',')) return false;
+            if (username.Trim(' ').Length <= 0 || password.Trim(' ').Length <= 0) return false;
+            //if (!username.Contains(',') || !password.Contains(',')) return false;
 
-            string url = $"{Settings.API_URL}/register.php?user{username}&pass={password}";
+            string url = $"{Settings.API_URL}/register.php?user={username}&pass={password}";
             string res = web.DownloadString(url);
             if (res == "ok")
                 return true;

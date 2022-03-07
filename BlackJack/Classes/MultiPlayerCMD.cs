@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlackJack.Classes
 {
@@ -13,11 +9,19 @@ namespace BlackJack.Classes
         {
             Game.Instance.multiplayer.BringToFront();
             Pages.MultiPlayer.server.SendRequest("start-game");
+            MultiPlayerFunction.CreateTable();
         }
         //[Client]
         public static void StartGame_Client()
         {
-            Game.Instance.multiplayer.BringToFront();
+            if (MultiPlayerSetUp.connectedToLobby)
+            {
+                MultiPlayerFunction.CreateTable();
+                Game.Instance.multiplayer.Invoke(new Action(() =>
+                {
+                    Game.Instance.multiplayer.BringToFront();
+                }));
+            }
         }
     }
 }
