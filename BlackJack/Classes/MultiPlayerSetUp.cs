@@ -13,6 +13,7 @@ namespace BlackJack.Classes
         public static int playerConnected, tableSize, playersIdsCnt = 0, myId = 0;
         public static List<string> playerNames = new List<string>();
         public static bool connectedToLobby = false;
+        public static string[] usernames;
         //MultiPlayer Setup
 
         //[Host]
@@ -70,7 +71,7 @@ namespace BlackJack.Classes
             LobbyRoom.JoinMessage(message[message.Length-1]);
 
             //Setup Usernames arry
-            string[] usernames = new string[myId+1];
+            usernames = new string[myId+1];
             for (int i = 0; i <= int.Parse(message[2]); i++)
                 usernames[i] = message[4 + i];
 
