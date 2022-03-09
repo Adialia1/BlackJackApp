@@ -77,14 +77,9 @@ namespace BlackJack.Pages
             joinServerBtn.Enabled = false;
             if(!isHost)
             {
-                if (!MultiPlayer.server.wsServer.IsAlive)
-                    MultiPlayer.server.Connect(false, joinServerID.Text);
-                else
-                    MultiPlayer.server.UpdateRoomIdAndHost(false, joinServerID.Text);
-
-                MultiPlayer.server.SendRequest($"checkRoomId,{Settings.username}");
+                MultiPlayer.server.Connect(false, joinServerID.Text);
             }
-            await Task.Delay(10000);
+            await Task.Delay(5000);
             joinServerBtn.Enabled = true;
         }
 
@@ -97,6 +92,22 @@ namespace BlackJack.Pages
         private void colorBtn_Click(object sender, EventArgs e)
         {
             colorDialog1.ShowDialog();
+        }
+
+        private void joinServerID_Enter(object sender, EventArgs e)
+        {
+            joinServerID.Text = "";
+        }
+
+        private void joinServerID_Leave(object sender, EventArgs e)
+        {
+            if (joinServerID.Text == "")
+                joinServerID.Text = "Room ID";
+        }
+
+        private void startGameBtn_Click(object sender, EventArgs e)
+        {
+            Classes.MultiPlayerCMD.StartGame_Host();
         }
     }
 }

@@ -12,7 +12,8 @@ namespace BlackJack.Classes
         static bool lobbyStarted = false;
         public static int playerConnected, tableSize, playersIdsCnt = 0, myId = 0;
         public static List<string> playerNames = new List<string>();
-
+        public static bool connectedToLobby = false;
+        public static string[] usernames;
         //MultiPlayer Setup
 
         //[Host]
@@ -50,11 +51,17 @@ namespace BlackJack.Classes
         public static void JoinAccept(string data)
         {   //                  [room],[message-action],[userId],[tableSize],[usersConnetedNames]
             //Template message: 349551,join-accept,2,3,test,.or,adi
-            Pages.Lobby.lobby_panel.Invoke(new Action(() =>
-            { Pages.Lobby.lobby_panel.BringToFront(); }));
+
             string[] message = data.Split(',');
+            if(message[message.Length - 1] == Settings.username)
+            {
+                Pages.Lobby.lobby_panel.Invoke(new Action(() =>
+                { Pages.Lobby.lobby_panel.BringToFront(); }));
+                connectedToLobby = true;
+            }
+
             //Ignore message[0], message[1],
-            if(!Pages.MultiPlayer.server.isHost)
+            if (!Pages.MultiPlayer.server.isHost)
             {
                 if (myId != -1)
                     myId = int.Parse(message[2]);
@@ -64,12 +71,11 @@ namespace BlackJack.Classes
             LobbyRoom.JoinMessage(message[message.Length-1]);
 
             //Setup Usernames arry
-            string[] usernames = new string[myId+1];
+            usernames = new string[myId+1];
             for (int i = 0; i <= int.Parse(message[2]); i++)
                 usernames[i] = message[4 + i];
 
             LobbyRoom.LoadNames(usernames);
-
         }
 
     }

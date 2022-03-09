@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlackJack.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,21 +12,26 @@ namespace BlackJack.Classes
     public class GameServer
     {
         public WebSocket wsServer = new WebSocket(Settings.SERVER_URL);
-        public bool isHost;
-        public string roomId;
+        public bool isHost { get; set; }
+        public string roomId { get; set; }
 
         public void Connect(bool host, string room)
         {
             isHost = host;
             roomId = room;
-            wsServer.OnMessage += WsServer_OnMessage;
-            wsServer.Connect();
-        }
 
-        public void UpdateRoomIdAndHost(bool host, string room)
-        {
-            isHost = host;
-            roomId = room;
+            wsServer.OnMessage += WsServer_OnMessage;
+            if(!wsServer.IsAlive)
+                wsServer.Connect();
+
+            if(!host)//Client
+                MultiPlayer.server.SendRequest($"checkRoomId,{Settings.username}");
+
+            if(isHost)
+            {
+                Pages.Lobby.lobby_panel.Invoke(new Action(() =>
+                { Pages.Lobby.lobby_panel.BringToFront(); }));
+            }
         }
 
         private void WsServer_OnMessage(object sender, MessageEventArgs e)
@@ -66,6 +72,9 @@ namespace BlackJack.Classes
             string[] message = data.Split(',');
             switch (message[1])
             {
+                case "start-game":
+                    MultiPlayerCMD.StartGame_Client();
+                    break;
             }
 
         }

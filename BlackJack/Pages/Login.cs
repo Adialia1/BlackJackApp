@@ -47,6 +47,7 @@ namespace BlackJack.Pages
             if (result)
             {
                 Classes.Settings.username = usernameTextBox.Text;
+                Game.Instance.Text = usernameTextBox.Text;
                 Game.Instance.menu.BringToFront();
             }
             else
